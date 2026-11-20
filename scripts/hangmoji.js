@@ -3,15 +3,16 @@
 /* -- get and store elements -- */
 const $temp = $("#emoji-display");
 
-// #region - game display elements
+// #region -- game display elements --
 
+const $emojiDisplay = $("#emoji-display");
 const $wordDisplay = $("#word-display");
 
 
-// #region
+// #endregion
 
 
-// #region - letter elements
+// #region -- letter elements --
 // const $carousel = $("#carousel");
 const $letterInput = $("#letter-input");
 const $guessBtn = $("#submit");
@@ -20,16 +21,22 @@ const $invalidLetter = $("#invalid-letter");
 const $alreadyGuessed = $("#already-guessed");
 const $correctLetter = $("#correct-letter");
 const $incorrectLetter = $("#incorrect-letter");
+const $gameOver = $("#game-over");
 
 const $allLetters = $("#letter-display li");
-
 
 // #endregion
 
 const $reset = $("#reset");
 
 // other variables
-// #region other variables
+// #region -- other variables --
+
+const imgPath = "../images/";
+const emojiArray = ["1F603", "1F605", "1F615", "1F610", "1F61F", "1F62C", "1F627", "1F62D"];
+const imgExt = ".svg";
+
+let emojiIndex = 0;
 
 let hangWord = new Word("TEST");
 
@@ -39,16 +46,16 @@ html = "";
 
 
 
-// #region -- initial setup
+// #region -- initial setup --
 
 puzzleBlanks();
-
+updateEmoji();
 
 // #endregion
 
 
 
-// #region - handlers for letter clicking
+// #region -- handlers for letter clicking --
 
 // $allLetters.click(getLetter);
 
@@ -79,8 +86,6 @@ function submitLetter(e) {
 			// grey out just-guessed letter
 			greyOutLetter(letter);
 			
-			// TODO -- handle the guessing											-- TODO
-			
 			if (hangWord.guessLetter(letter)) {
 				console.log(letter + " is in word");
 				$correctLetter.removeClass("hide");
@@ -88,9 +93,15 @@ function submitLetter(e) {
 				// if the guess is correct, update the word display
 				puzzleBlanks();
 			} else {
-				// TODO -- handle a wrong guess										-- TODO
-				$incorrectLetter.removeClass("hide");
+				emojiIndex++;
+				updateEmoji();
 				
+				if (emojiIndex < emojiArray.length - 1) {
+					$incorrectLetter.removeClass("hide");
+				} else {
+					$gameOver.removeClass("hide");
+					disableGuessing();
+				}
 				
 			}
 			
@@ -118,10 +129,17 @@ function getLetter() {
 	console.log(letter);
 }
 
+
 // #endregion
 
 
-// #region -- set up & update puzzle
+// #region -- set up & update puzzle --
+
+function updateEmoji() {
+	
+	$emojiDisplay.attr("src", imgPath + emojiArray[emojiIndex] + imgExt);
+	
+}
 
 function puzzleBlanks() {
 	html = "";
@@ -151,15 +169,33 @@ function resetPuzzle() {
 	hangWord = new Word("TEST");
 	
 	puzzleBlanks();
+	emojiIndex = 0;
+	updateEmoji();
+	enableGuessing();
 }
 
+
+function disableGuessing() {
+	
+	$guessBtn.prop("disabled", true);
+	$letterInput.prop("disabled", true);
+	$letterInput.val("");
+	
+}
+
+function enableGuessing() {
+	
+	$guessBtn.prop("disabled", false);
+	$letterInput.prop("disabled", false);
+	
+}
 
 
 
 // #endregion
 
 
-// #region -- update displayed letters
+// #region -- update displayed letters --
 
 function greyOutLetter(letter) {
 	// console.log($allLetters);
@@ -193,6 +229,9 @@ function hideMessages() {
 	}
 	if (!$incorrectLetter.hasClass("hide")) {
 		$incorrectLetter.addClass("hide");
+	}
+	if (!$gameOver.hasClass("hide")) {
+		$gameOver.addClass("hide");
 	}
 }
 

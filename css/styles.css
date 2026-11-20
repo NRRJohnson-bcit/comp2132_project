@@ -363,7 +363,8 @@ article {
   background-color: #D4CAB0;
   padding: 0px 10px 10px 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 article h2, h3, h4 {
@@ -404,7 +405,7 @@ form {
   background-color: var(--brown-1);
   border-radius: 10px;
   padding: 15px;
-  max-width: 500px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -671,8 +672,8 @@ place after HTML elements in .css file
 #already-guessed {
   box-shadow: 0 0 10px #897565;
   border-radius: 5px;
-  border: 3px solid #b53d5e;
-  background-color: #b53d5e;
+  border: 3px solid #789095;
+  background-color: #789095;
 }
 
 #correct-letter {
@@ -683,6 +684,13 @@ place after HTML elements in .css file
 }
 
 #incorrect-letter {
+  box-shadow: 0 0 10px #897565;
+  border-radius: 5px;
+  border: 3px solid #b53d5e;
+  background-color: #b53d5e;
+}
+
+#game-over {
   box-shadow: 0 0 10px #897565;
   border-radius: 5px;
   border: 3px solid #b53d5e;
@@ -719,9 +727,9 @@ place after HTML elements in .css file
 #reset {
   align-content: center;
   text-align: center;
+  margin: auto;
   width: 130px;
   height: 40px;
-  margin: 5px;
   font-family: "Libre Baskerville", serif;
   font-weight: bold;
   box-shadow: 3px 3px 10px #312a2c;

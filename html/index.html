@@ -41,13 +41,14 @@
 			<article>
 				<h3>Hangmoji</h3>
 				
-				<img src="../images/1F601.svg" alt="grinning" id="emoji-display">
+				<img src="../images/1F601.svg" alt="grinning" id="emoji-display" class="flex-wide">
 				
 				<h4>What is the word?</h4>
-				<ul id="word-display">
-					
-				</ul>
-				
+				<div class="flex-wide">
+					<ul id="word-display">
+						
+					</ul>
+				</div>
 			</article>
 			
 			
@@ -66,6 +67,7 @@
 					<div id="already-guessed" class="flex-wide hide">You already guessed that letter!</div>
 					<div id="correct-letter" class="flex-wide hide">That letter is in the word!</div>
 					<div id="incorrect-letter" class="flex-wide hide">That letter is not in the word!</div>
+					<div id="game-over" class="flex-wide hide">You have run out of guesses! Click "Play Again" for a new word.</div>
 				</form>
 				<h3>Letters Guessed:</h3>
 				<div id="letter-display">
@@ -99,7 +101,9 @@
 					</ul>
 				</div>
 				<div class="flex-wide"></div>
-				<div id="reset">Play Again</div>
+				<div class="flex-wide">
+					<div id="reset">Play Again</div>
+				</div>
 				<div class="flex-wide"></div>
 			</article>
 			

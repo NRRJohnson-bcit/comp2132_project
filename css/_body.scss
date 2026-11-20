@@ -41,12 +41,15 @@ article {
 	padding: 0px 10px 10px 10px;
 	
 	display: flex;
-	flex-direction: column;
+	// flex-direction: column;
+	flex-direction: row;
+	flex-wrap: wrap;
 	
 }
 article h2,h3,h4 {
 	color: v.$dark-brown;
 	margin-bottom: 0;
+	// margin: 10px;
 }
 article img {
 	margin: 0 0 15px 0;
@@ -91,7 +94,8 @@ form {
 	
 	// padding: 5px 0;
 	
-	max-width: 500px;
+	// max-width: 500px;
+	width: 100%;
 	
 	display: flex;
 	flex-direction: column;

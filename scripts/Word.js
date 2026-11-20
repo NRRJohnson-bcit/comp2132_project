@@ -13,9 +13,9 @@ class Word {
 		this.#guesses = [];
 		this.#correctArray = [];
 		
-		// this.#theWord = word.toUpperCase();
+		this.#theWord = word.toUpperCase();
 		// test word
-		this.#theWord = "TESTING";
+		// this.#theWord = "TESTING";
 		
 		this.#theWordArray = [...this.#theWord];
 		// initialize correctArray with a length so it can be use as a template for the blank puzzle
