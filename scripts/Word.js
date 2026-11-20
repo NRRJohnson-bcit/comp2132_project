@@ -13,22 +13,24 @@ class Word {
 		this.#guesses = [];
 		this.#correctArray = [];
 		
-		// this.#theWord = word.upper();
+		// this.#theWord = word.toUpperCase();
 		// test word
-		this.#theWord = "TEST";
+		this.#theWord = "TESTING";
 		
 		this.#theWordArray = [...this.#theWord];
+		// initialize correctArray with a length so it can be use as a template for the blank puzzle
+		this.#correctArray.length = this.#theWordArray.length;
 	}
 	
 	guessLetter(letter) {
-		letter = letter.upper();
+		letter = letter.toUpperCase();
 		if (!this.isGuessed(letter)) {
 			this.#guesses.push(letter);
 			// if guessed letter is in word, update correctArray
 			if (this.isInWord(letter)) {
 				// check each character in theWordArray, and if it matches the letter parameter, 
 				// 		add letter to correctArray at that index
-				for( let i = 0; index < this.#theWordArray.length(); i++ ){
+				for( let i = 0; i < this.#theWordArray.length; i++ ){
 					if (this.#theWordArray[i] == letter) {
 						this.#correctArray[i] = letter;
 					}
@@ -46,17 +48,22 @@ class Word {
 	
 	// checks if the parameter letter has already been guessed
 	isGuessed(letter) {
-		return this.#guesses.includes(letter.upper());
+		return this.#guesses.includes(letter.toUpperCase());
 	}
 	
 	// checks if the parameter letter is in the word
 	isInWord(letter) {
-		return this.#theWordArray.includes(letter.upper());
+		return this.#theWordArray.includes(letter.toUpperCase());
 	}
 	
 	// gets the array that represents the so-far-constructed word
 	getCorrectArray() {
 		return this.#correctArray;
+	}
+	
+	// gets the array of letters that have already been guessed
+	getGuesses() {
+		return this.#guesses;
 	}
 	
 }

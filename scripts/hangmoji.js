@@ -3,6 +3,13 @@
 /* -- get and store elements -- */
 const $temp = $("#emoji-display");
 
+// #region - game display elements
+
+const $wordDisplay = $("#word-display");
+
+
+// #region
+
 
 // #region - letter elements
 // const $carousel = $("#carousel");
@@ -15,6 +22,23 @@ const $allLetters = $("#letter-display li");
 
 // #endregion
 
+// other variables
+// #region other variables
+
+const hangWord = new Word("TEST");
+
+html = "";
+
+// #endregion
+
+
+
+// #region -- initial setup
+
+puzzleBlanks();
+
+
+// #endregion
 
 
 
@@ -44,13 +68,29 @@ function submitLetter(e) {
 	} else {
 		// TODO -- handle the guessing											-- TODO
 		
+		console.log(hangWord.getCorrectArray());
+		
+		if (hangWord.isInWord(letter)) {
+			console.log(letter + " is in word");
+			
+			// if the guess is correct, update the guessed letters...
+			hangWord.guessLetter(letter);
+			// ... and update the word display
+			puzzleBlanks();
+		} else {
+			// TODO -- handle a wrong guess										-- TODO
+			
+			
+			
+		}
+		
+		
 		
 		
 	}
 	
 	
 }
-
 
 
 function getLetter() {
@@ -60,3 +100,45 @@ function getLetter() {
 }
 
 // #endregion
+
+
+// #region -- functions to set up and update puzzle
+
+function puzzleBlanks() {
+	html = "";
+	let correctArray = hangWord.getCorrectArray();
+	// console.log(correctArray);
+	
+	for( let i = 0; i < correctArray.length; i++ ){
+		// if there is a letter in this index of the array, display it
+		if (correctArray[i] != null) {
+			html += `<li>${correctArray[i]}</li>`;
+		} else {
+			// otherwise, display a blank indicator
+			html += `<li>__</li>`;
+		}
+	}
+	
+	// console.log(html);
+	$wordDisplay.html(html);
+}
+
+
+
+
+// #endregion
+
+// #region -- functions to update displayed letters
+
+function greyOutLetter() {
+	// $allLetters
+	
+	
+	
+}
+
+
+
+// #endregion
+
+
