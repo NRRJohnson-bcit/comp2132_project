@@ -88,9 +88,18 @@
 }
 
 #invalid-letter {
-	// background-color: v.$red-fade;
 	@include m.rounded-shaded-box(0, 0, v.$brown-2, 5px, v.$red-fade, v.$red-fade);
 }
+#already-guessed {
+	@include m.rounded-shaded-box(0, 0, v.$brown-2, 5px, v.$red-fade, v.$red-fade);
+}
+#correct-letter {
+	@include m.rounded-shaded-box(0, 0, v.$brown-2, 5px, v.$link-teal, v.$link-teal);
+}
+#incorrect-letter {
+	@include m.rounded-shaded-box(0, 0, v.$brown-2, 5px, v.$red-fade, v.$red-fade);
+}
+
 
 
 #letter-display ul {

@@ -15,7 +15,11 @@ const $wordDisplay = $("#word-display");
 // const $carousel = $("#carousel");
 const $letterInput = $("#letter-input");
 const $guessBtn = $("#submit");
+// messages under letter guess input
 const $invalidLetter = $("#invalid-letter");
+const $alreadyGuessed = $("#already-guessed");
+const $correctLetter = $("#correct-letter");
+const $incorrectLetter = $("#incorrect-letter");
 
 const $allLetters = $("#letter-display li");
 
@@ -50,9 +54,7 @@ $guessBtn.click(submitLetter);
 
 function submitLetter(e) {
 	e.preventDefault();
-	if (!$invalidLetter.hasClass("hide")) {
-		$invalidLetter.addClass("hide");
-	}
+	hideMessages();
 	
 	// console.log("CLICK");
 	
@@ -63,31 +65,45 @@ function submitLetter(e) {
 	let regExLetter = RegExp("[a-zA-Z]");
 	
 	if (!regExLetter.test(letter)) {
-		console.log("NOT A LETTER");
+		// console.log("NOT A LETTER");
 		$invalidLetter.removeClass("hide");
 	} else {
-		// TODO -- handle the guessing											-- TODO
 		
-		console.log(hangWord.getCorrectArray());
-		
-		if (hangWord.isInWord(letter)) {
-			console.log(letter + " is in word");
-			
-			// if the guess is correct, update the guessed letters...
-			hangWord.guessLetter(letter);
-			// ... and update the word display
-			puzzleBlanks();
+		// check if letter already guessed
+		if (hangWord.isGuessed(letter)) {
+			$alreadyGuessed.removeClass("hide");
 		} else {
-			// TODO -- handle a wrong guess										-- TODO
+			// grey out just-guessed letter
+			greyOutLetter(letter);
 			
+			// TODO -- handle the guessing											-- TODO
+			
+			if (hangWord.guessLetter(letter)) {
+				console.log(letter + " is in word");
+				$correctLetter.removeClass("hide");
+				
+				// if the guess is correct, update the word display
+				puzzleBlanks();
+			} else {
+				// TODO -- handle a wrong guess										-- TODO
+				$incorrectLetter.removeClass("hide");
+				
+				
+			}
+			
+			
+			// console.log(hangWord.getCorrectArray());
+			// console.log(hangWord.getGuesses());
 			
 			
 		}
 		
-		
-		
-		
 	}
+	
+	
+	// set focus on text box, and select the text in it
+	$letterInput.focus();
+	$letterInput.select();
 	
 	
 }
@@ -128,14 +144,44 @@ function puzzleBlanks() {
 
 // #endregion
 
+
 // #region -- functions to update displayed letters
 
-function greyOutLetter() {
-	// $allLetters
+function greyOutLetter(letter) {
+	// console.log($allLetters);
 	
+	letter = letter.toUpperCase();
 	
+	$allLetters.each(function(li) {
+		let char = $(this).html();
+		
+		// console.log(char);
+		
+		if (char == letter && !$(this).hasClass("letter-selected")) {
+			$(this).addClass("letter-selected");
+			// console.log("adding class");
+		}
+		
+	});
 	
 }
+
+// hide the messages under letter guess input
+function hideMessages() {
+	if (!$invalidLetter.hasClass("hide")) {
+		$invalidLetter.addClass("hide");
+	}
+	if (!$alreadyGuessed.hasClass("hide")) {
+		$alreadyGuessed.addClass("hide");
+	}
+	if (!$correctLetter.hasClass("hide")) {
+		$correctLetter.addClass("hide");
+	}
+	if (!$incorrectLetter.hasClass("hide")) {
+		$incorrectLetter.addClass("hide");
+	}
+}
+
 
 
 

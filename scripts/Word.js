@@ -24,8 +24,10 @@ class Word {
 	
 	guessLetter(letter) {
 		letter = letter.toUpperCase();
+		
 		if (!this.isGuessed(letter)) {
 			this.#guesses.push(letter);
+			
 			// if guessed letter is in word, update correctArray
 			if (this.isInWord(letter)) {
 				// check each character in theWordArray, and if it matches the letter parameter, 

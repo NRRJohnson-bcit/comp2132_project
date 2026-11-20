@@ -664,6 +664,27 @@ place after HTML elements in .css file
   background-color: #b53d5e;
 }
 
+#already-guessed {
+  box-shadow: 0 0 10px #897565;
+  border-radius: 5px;
+  border: 3px solid #b53d5e;
+  background-color: #b53d5e;
+}
+
+#correct-letter {
+  box-shadow: 0 0 10px #897565;
+  border-radius: 5px;
+  border: 3px solid #57ad8d;
+  background-color: #57ad8d;
+}
+
+#incorrect-letter {
+  box-shadow: 0 0 10px #897565;
+  border-radius: 5px;
+  border: 3px solid #b53d5e;
+  background-color: #b53d5e;
+}
+
 #letter-display ul {
   padding: 0 10px;
   display: flex;
