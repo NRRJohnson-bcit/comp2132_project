@@ -1,0 +1,45 @@
+@use "variables" as v;
+
+/*------------------------
+@media queries
+------------------------*/
+@media (min-width: 480px) {
+	
+	main {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto auto auto auto auto 1fr;
+	}
+	
+	
+	.grid-wide {
+		grid-column-end: span 2;
+	}
+	
+	
+	form {
+		margin: 15px 5px 15px 5px;
+		background-color: v.$brown-1;
+		border-radius: 10px;
+		
+		flex-direction: row;
+		flex-wrap: wrap;
+		
+		padding: 15px;
+		// padding: 5px 0;
+		
+		/* display: grid;
+		grid-template-columns: auto 1fr; */
+	}
+	
+	.form-wide {
+		// grid-column: 1 / span 2;
+		width: 100%;
+	}
+	
+	.validation-msg {
+		grid-column: 1 / span 2;
+		margin: 0 2px 0 112px;
+	}
+	
+}
+

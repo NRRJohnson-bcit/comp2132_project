@@ -1,0 +1,17 @@
+@use "variables" as v;
+
+header {
+	background-color: v.$blue-fade;
+	padding:10px;
+}
+nav {
+	background-color: v.$brown-1;
+	
+	padding: 5px;
+	
+}
+
+
+header, nav {
+	border:solid 1px black;
+}

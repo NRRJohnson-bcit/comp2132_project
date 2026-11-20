@@ -1,0 +1,11 @@
+@use "variables" as v;
+
+/* SASS mixins */
+
+@mixin rounded-shaded-box($xoffset, $yoffset, $shadow-colour, $rounded-corners, $border-colour, $back-colour){
+	box-shadow:$xoffset $yoffset 10px $shadow-colour;
+	border-radius: $rounded-corners;
+	border:3px solid $border-colour;
+	background-color: $back-colour;
+}
+

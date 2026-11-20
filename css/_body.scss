@@ -1,0 +1,164 @@
+@use "variables" as v;
+
+/*------------------------
+HTML element selectors
+------------------------*/
+body{
+	margin:0px;		/* for mobile viewing purposes */
+	background-color: v.$brown-2;
+	
+	font-family: "Open Sans", sans-serif;
+}
+
+
+main, #wrapper{
+	border:solid 1px black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Libre Baskerville", serif;
+	font-weight: bold;
+}
+
+main{
+	padding:10px;
+	/*  sizing of flex items with flex 
+		means this tag will take up 
+		all available space on the main axis */
+	flex:1;
+	
+	display: grid;
+	gap: 10px;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+}
+
+article {
+	border:solid 2px v.$dark-brown;
+	border-radius: 10px;
+	background-color: v.$article-highlight;
+	
+	padding: 0px 10px 10px 10px;
+}
+article h2,h3 {
+	color: v.$dark-brown;
+}
+article img {
+	margin: 0 0 15px 0;
+	
+	border-radius: 6px;
+}
+article img.left-float {
+	margin-right: 10px;
+}
+article p {
+	line-height: 140%;
+}
+article div {
+	margin: auto;
+}
+
+
+
+
+
+/* #region : list formatting */
+
+li {
+	padding: 3px 0;
+}
+
+li img {
+	max-width: 100px;
+}
+
+/* #endregion : list formatting */
+
+
+/* #region : form formatting */
+
+form {
+	margin: 15px 5px 15px 5px;
+	background-color: var(--brown-1);
+	border-radius: 10px;
+	
+	padding: 15px;
+	
+	// padding: 5px 0;
+	
+	max-width: 500px;
+	
+	display: flex;
+	flex-direction: column;
+}
+
+form label {
+	margin: 2px;
+	align-content: center;
+}
+form input {
+	margin: 2px;
+}
+form div {
+	padding: 4px;
+	// margin: 5px 0;
+}
+
+
+form button {
+	margin: 2px;
+	margin-left: 0;
+	cursor:pointer;
+}
+form div input {
+	margin-right: 0;
+}
+
+input[type=submit] {
+	margin: 2px 20px;
+	padding: 0 8px;
+	
+	cursor: pointer;
+}
+
+
+/* #endregion : form formatting */
+
+
+
+
+/* #region : button formatting */
+button {
+	background-color: v.$dark-brown;
+	border: 3px solid v.$blue-fade;
+	border-radius: 5px;
+	
+	padding: 6px;
+	
+	font-weight: bold;
+	color: v.$back-parch;
+}
+
+button:hover {
+	background-color: v.$back-parch;
+	color: v.$link-teal;
+}
+
+
+/* #endregion : button formatting */
+
+
+
+/* good default for img tag */
+img{
+	max-width:100%;
+	height:auto;	
+}
+
+/* basic code formatting */
+code {
+	background-color: #eeeeee;
+	border-radius: 3px;
+	font-family: "Courier New", monospace;
+	padding: 0 3px;
+}

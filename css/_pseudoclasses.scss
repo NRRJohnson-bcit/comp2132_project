@@ -1,0 +1,31 @@
+@use "variables" as v;
+
+/*---------------------------
+Pseudoclass Selectors 
+---------------------------*/
+
+/* #region : ------ Default link colours and behaviours ------ */
+/* link has never been clicked*/
+a:link{
+	color: v.$link-teal;
+	text-decoration: none;
+}
+/* link has been clicked previously */
+a:visited{
+	color: v.$link-brown;
+}
+/* link is in mouseover state */
+a:hover{
+	text-decoration: underline;
+}
+/* you can style for when the user tabs into a tag  */
+a:focus{	
+	outline: thin dotted invert;
+	
+}
+/* link is being clicked/tapped right now!! */
+a:active{
+	color: v.$blue-fade;
+}
+/* #endregion */
+

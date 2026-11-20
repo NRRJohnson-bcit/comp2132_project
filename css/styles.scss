@@ -1,0 +1,24 @@
+
+// import resets
+@use "normalize";
+@use "box_reset";
+
+// import SASS variables
+@use "variables";
+
+// import SASS mixins
+@use "mixins";
+
+// import pieces of basic body formatting
+@use "header";
+@use "body";
+@use "footer"; 
+
+// import classes, ids, and pseudoclasses
+@use "pseudoclasses";
+@use "classes";
+@use "ids";
+
+// import media queries for wider screens
+@use "widescreen_layout";
+

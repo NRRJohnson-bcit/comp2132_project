@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- author: Nicolas Johnson -->
+	<head>
+		<!-- add descriptive text to the <title> -->
+		<title>COMP 2132 Hangman Project</title>
+		<meta charset="utf-8">
+		<!-- set up for mobile widths -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- link to stylesheet -->
+		<link rel="stylesheet" href="../css/styles.css">
+		<!-- font server -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+		<!-- scripts -->
+		<!-- first load the jQuery Library -->
+		<script src="https://code.jquery.com/jquery-3.7.0.min.js" defer></script>
+		<script src="../scripts/hangmoji.js" defer></script>
+		
+	</head>
+	<body>
+	<!-- use the <body> to contain all page content -->
+	<div id="wrapper">
+		<!-- use the <div> wrapper to format all page content -->
+		<header>
+			<h1>COMP 2132 Hangman Project</h1>
+		</header>
+		
+		<nav>
+			
+		</nav>
+		
+		<main>
+			<div class="grid-wide">
+				
+			</div>
+			
+			
+			<article>
+				<h3>Hangmoji</h3>
+				
+				<img src="../images/1F601.svg" alt="grinning" id="emoji-display">
+				
+				<h4>What is the word?</h4>
+				<ul id="word-display">
+					<li>__</li>
+					<li>__</li>
+					<li>__</li>
+					<li>__</li>
+					<li>__</li>
+					<li>__</li>
+				</ul>
+				
+			</article>
+			
+			
+			<article>
+				<form action="">
+					<label for="letter-input" class="form-wide">Guess a letter:</label>
+					<div class="form-wide"></div>
+					<input type="text" name="letter-input" id="letter-input" maxlength="1">
+					
+					<!-- <div id="guess">Guess</div>
+					<div></div> -->
+					
+					<input type="submit" value="Guess" id="submit">
+					<div class="form-wide"></div>
+					<div id="invalid-letter" class="flex-wide hide">You must guess a letter!</div>
+				</form>
+				<h3>Letters Guessed:</h3>
+				<div id="letter-display">
+					<ul>
+						<li>A</li>
+						<li>B</li>
+						<li>C</li>
+						<li>D</li>
+						<li>E</li>
+						<li>F</li>
+						<li>G</li>
+						<li class="letter-selected">H</li>
+						<li>I</li>
+						<li>J</li>
+						<li>K</li>
+						<li>L</li>
+						<li>M</li>
+						<li>N</li>
+						<li>O</li>
+						<li>P</li>
+						<li>Q</li>
+						<li>R</li>
+						<li>S</li>
+						<li>T</li>
+						<li>U</li>
+						<li>V</li>
+						<li>W</li>
+						<li>X</li>
+						<li>Y</li>
+						<li>Z</li>
+					</ul>
+				</div>
+			</article>
+			
+			
+			<div class="grid-wide">
+				
+			</div>
+			
+			
+		</main>
+		
+		<footer>
+			<p>COMP 2132, by Nicolas Johnson</p>
+		</footer>
+		
+	</div>
+	
+	
+	
+	</body>
+</html>
+
+

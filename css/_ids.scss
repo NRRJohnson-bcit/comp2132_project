@@ -1,0 +1,121 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+/*------------------------
+#id element selectors
+------------------------*/
+#wrapper{
+	/* make all children display as flex items */
+	display:flex;
+	/* display vertically instead of horizontally */
+	flex-direction:column;
+	/* even if there is insufficient content, expand the page height to at least be as tall as the viewport */
+	min-height:100vh;
+	
+	/* max-width will stop line lengths from getting too wide */
+	max-width: 1000px;
+	
+	/* any tag less wide than its parent will be centered along the horizontal axis */
+	margin:auto;
+	
+	background-color: v.$back-parch;
+}
+
+/* the ul inside the nav can be a flex container */
+#nav_ul{
+	display:flex;
+	list-style-type:none;
+	padding: 0;
+	
+	margin: 0;
+}
+
+
+
+/* #region : emoji display ids */
+
+#emoji-display {
+	max-height: 300px;
+	margin: 0;
+	
+}
+
+
+/* #endregion */
+
+
+/* #region : word display ids */
+
+#word-display {
+	padding: 0 10px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	list-style-type: none;
+}
+
+#word-display li {
+	width: 40px;
+	height: 40px;
+	margin: 5px;
+	text-align: center;
+	line-height: 30px;
+	font-family: "Libre Baskerville", serif;
+	font-weight: bold;
+	@include m.rounded-shaded-box(3px, 3px, v.$dark-brown, 3px, v.$brown-2, v.$brown-1);
+}
+
+
+/* #endregion */
+
+
+/* #region : letter select & display ids */
+
+#letter-input {
+	max-width: 40px;
+}
+
+#guess {
+	// width: auto;
+	padding: 5px;
+	font-family: "Libre Baskerville", serif;
+	font-weight: bold;
+	@include m.rounded-shaded-box(3px, 3px, v.$dark-brown, 3px, v.$article-highlight, v.$blue-fade);
+}
+#guess:hover {
+	cursor: pointer;
+	background-color: v.$link-teal;
+}
+
+#invalid-letter {
+	// background-color: v.$red-fade;
+	@include m.rounded-shaded-box(0, 0, v.$brown-2, 5px, v.$red-fade, v.$red-fade);
+}
+
+
+#letter-display ul {
+	padding: 0 10px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	list-style-type: none;
+}
+#letter-display li {
+	width: 40px;
+	height: 40px;
+	margin: 5px;
+	text-align: center;
+	line-height: 30px;
+	font-family: "Libre Baskerville", serif;
+	font-weight: bold;
+	@include m.rounded-shaded-box(3px, 3px, v.$dark-brown, 3px, v.$brown-2, v.$brown-1);
+}
+
+#letter-display li:hover {
+	cursor: pointer;
+}
+
+
+
+/* #endregion */
+

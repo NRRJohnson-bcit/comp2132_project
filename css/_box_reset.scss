@@ -1,0 +1,7 @@
+/* add your styles afterwards... */
+html{
+	box-sizing: border-box;		/* keeps padding & border from increasing width */
+}
+*, *:before, *:after {
+	box-sizing: inherit;		/* inherits box-sizing from html{} */
+}
