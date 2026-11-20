@@ -26,10 +26,12 @@ const $allLetters = $("#letter-display li");
 
 // #endregion
 
+const $reset = $("#reset");
+
 // other variables
 // #region other variables
 
-const hangWord = new Word("TEST");
+let hangWord = new Word("TEST");
 
 html = "";
 
@@ -51,6 +53,7 @@ puzzleBlanks();
 // $allLetters.click(getLetter);
 
 $guessBtn.click(submitLetter);
+$reset.click(resetPuzzle);
 
 function submitLetter(e) {
 	e.preventDefault();
@@ -118,7 +121,7 @@ function getLetter() {
 // #endregion
 
 
-// #region -- functions to set up and update puzzle
+// #region -- set up & update puzzle
 
 function puzzleBlanks() {
 	html = "";
@@ -140,12 +143,23 @@ function puzzleBlanks() {
 }
 
 
+function resetPuzzle() {
+	hideMessages();
+	$allLetters.removeClass("letter-selected");
+	$letterInput.val("");
+	
+	hangWord = new Word("TEST");
+	
+	puzzleBlanks();
+}
+
+
 
 
 // #endregion
 
 
-// #region -- functions to update displayed letters
+// #region -- update displayed letters
 
 function greyOutLetter(letter) {
 	// console.log($allLetters);

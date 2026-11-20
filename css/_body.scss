@@ -39,9 +39,14 @@ article {
 	background-color: v.$article-highlight;
 	
 	padding: 0px 10px 10px 10px;
+	
+	display: flex;
+	flex-direction: column;
+	
 }
-article h2,h3 {
+article h2,h3,h4 {
 	color: v.$dark-brown;
+	margin-bottom: 0;
 }
 article img {
 	margin: 0 0 15px 0;

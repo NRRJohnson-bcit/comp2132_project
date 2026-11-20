@@ -362,10 +362,13 @@ article {
   border-radius: 10px;
   background-color: #D4CAB0;
   padding: 0px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
 }
 
-article h2, h3 {
+article h2, h3, h4 {
   color: #312a2c;
+  margin-bottom: 0;
 }
 
 article img {
@@ -554,6 +557,7 @@ place after HTML elements in .css file
 
 .flex-wide {
   width: 100%;
+  margin: 10px;
 }
 
 /* #region : floating classes */
@@ -674,8 +678,8 @@ place after HTML elements in .css file
 #correct-letter {
   box-shadow: 0 0 10px #897565;
   border-radius: 5px;
-  border: 3px solid #57ad8d;
-  background-color: #57ad8d;
+  border: 3px solid #648764;
+  background-color: #648764;
 }
 
 #incorrect-letter {
@@ -712,6 +716,25 @@ place after HTML elements in .css file
 }
 
 /* #endregion */
+#reset {
+  align-content: center;
+  text-align: center;
+  width: 130px;
+  height: 40px;
+  margin: 5px;
+  font-family: "Libre Baskerville", serif;
+  font-weight: bold;
+  box-shadow: 3px 3px 10px #312a2c;
+  border-radius: 3px;
+  border: 3px solid #312a2c;
+  background-color: #648764;
+}
+
+#reset:hover {
+  cursor: pointer;
+  background-color: #57ad8d;
+}
+
 /*------------------------
 @media queries
 ------------------------*/
