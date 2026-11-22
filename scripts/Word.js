@@ -20,6 +20,12 @@ class Word {
 		this.#theWordArray = [...this.#theWord];
 		// initialize correctArray with a length so it can be use as a template for the blank puzzle
 		this.#correctArray.length = this.#theWordArray.length;
+		
+		// immediately guesses hyphen and apostrophe, in case the word contains those characters
+		//		(so that the game shows them in the initial display)
+		//		(other non-letter characters are not handled)
+		this.guessLetter("-");
+		this.guessLetter("'");
 	}
 	
 	guessLetter(letter) {
@@ -56,6 +62,11 @@ class Word {
 	// checks if the parameter letter is in the word
 	isInWord(letter) {
 		return this.#theWordArray.includes(letter.toUpperCase());
+	}
+	
+	// checks if the word is fully guessed
+	isComplete() {
+		return (this.#correctArray.join() == this.#theWordArray.join());
 	}
 	
 	// gets the array that represents the so-far-constructed word

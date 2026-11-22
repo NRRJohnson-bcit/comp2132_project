@@ -4,10 +4,16 @@
 const $temp = $("#emoji-display");
 
 // #region -- game display elements --
-
 const $emojiDisplay = $("#emoji-display");
 const $wordDisplay = $("#word-display");
 
+const $congratsMsg = $("#congrats-msg");
+
+const $hintClick = $("#hint-click");
+const $hintDisplay = $("#hint-display");
+
+// message for exception
+const $exceptionMsg = $("#exception-msg");
 
 // #endregion
 
@@ -38,7 +44,11 @@ const imgExt = ".svg";
 
 let emojiIndex = 0;
 
-let hangWord = new Word("TEST");
+// let hangWord = new Word("TESTING");
+// let hangHint = "This is a hint!";
+
+let hangWord;
+let hangHint = "";
 
 html = "";
 
@@ -48,8 +58,11 @@ html = "";
 
 // #region -- initial setup --
 
-puzzleBlanks();
-updateEmoji();
+// setting up puzzle blanks, hint, and starting emoji all handled in getWord()
+getWord();
+// puzzleBlanks();
+// setHint();
+// updateEmoji();
 
 // #endregion
 
@@ -87,11 +100,17 @@ function submitLetter(e) {
 			greyOutLetter(letter);
 			
 			if (hangWord.guessLetter(letter)) {
-				console.log(letter + " is in word");
 				$correctLetter.removeClass("hide");
 				
 				// if the guess is correct, update the word display
 				puzzleBlanks();
+				
+				// if the word is fully guessed, congratulate the user
+				if (hangWord.isComplete()) {
+					$emojiDisplay.attr("src", imgPath + "1F601" + imgExt);
+					$congratsMsg.removeClass("hide");
+					disableGuessing();
+				}
 			} else {
 				emojiIndex++;
 				updateEmoji();
@@ -104,22 +123,13 @@ function submitLetter(e) {
 				}
 				
 			}
-			
-			
-			// console.log(hangWord.getCorrectArray());
-			// console.log(hangWord.getGuesses());
-			
-			
 		}
 		
 	}
 	
-	
 	// set focus on text box, and select the text in it
 	$letterInput.focus();
 	$letterInput.select();
-	
-	
 }
 
 
@@ -133,12 +143,24 @@ function getLetter() {
 // #endregion
 
 
+// #region -- handler for hint display --
+$hintClick.click(showHideHint);
+
+function showHideHint() {
+	if ($hintDisplay.hasClass("hide")) {
+		$hintDisplay.removeClass("hide");
+	} else {
+		$hintDisplay.addClass("hide");
+	}
+}
+
+// #endregion
+
+
 // #region -- set up & update puzzle --
 
 function updateEmoji() {
-	
 	$emojiDisplay.attr("src", imgPath + emojiArray[emojiIndex] + imgExt);
-	
 }
 
 function puzzleBlanks() {
@@ -160,36 +182,35 @@ function puzzleBlanks() {
 	$wordDisplay.html(html);
 }
 
+function setHint() {
+	$hintDisplay.html(hangHint);
+}
+
 
 function resetPuzzle() {
 	hideMessages();
+	if (!$congratsMsg.hasClass("hide")) {
+		$congratsMsg.addClass("hide");
+	}
 	$allLetters.removeClass("letter-selected");
 	$letterInput.val("");
 	
-	hangWord = new Word("TEST");
-	
-	puzzleBlanks();
 	emojiIndex = 0;
-	updateEmoji();
+	getWord();
 	enableGuessing();
 }
 
 
 function disableGuessing() {
-	
 	$guessBtn.prop("disabled", true);
 	$letterInput.prop("disabled", true);
 	$letterInput.val("");
-	
 }
 
 function enableGuessing() {
-	
 	$guessBtn.prop("disabled", false);
 	$letterInput.prop("disabled", false);
-	
 }
-
 
 
 // #endregion
@@ -240,4 +261,54 @@ function hideMessages() {
 
 // #endregion
 
+
+// #region -- JSON fetch - get word for puzzle --
+
+function getWord() {
+	// hide the exception message, if necessary
+	if (!$exceptionMsg.hasClass("hide")) {
+		$exceptionMsg.addClass("hide");
+	}
+	
+	const fetchLocation = "https://randomlexicon.com/api/random-definition?lang=en&maxLen=8";
+	// const fetchLocation = "https://randomlexicon.com/api/words/ox-eyed";
+	
+	fetch(fetchLocation)
+		.then(function(response) {
+			if(response.ok){
+				return response.json();
+			}else{
+				console.log("Network error: fetch failed");
+			}    
+		})
+		.then(function(data) {
+			// handle the API data
+			console.log(data.word);
+			console.log(data.definition);
+			
+			hangWord = new Word(data.word);
+			hangHint = data.definition;
+			
+			puzzleBlanks();
+			setHint();
+			updateEmoji();
+			
+		})
+		.catch(function(error) {
+			// handle problems
+			
+			// make the emoji cry
+			emojiIndex = 7;
+			updateEmoji();
+			
+			// let the user know something's happened
+			$exceptionMsg.removeClass("hide");
+		});
+	
+	
+}
+
+
+
+// #endregion
 

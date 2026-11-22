@@ -40,6 +40,18 @@
 	
 }
 
+#hint-click:hover {
+	cursor: pointer;
+}
+
+#congrats-msg {
+	padding: 4px;
+	@include m.rounded-shaded-box(0, 0, v.$brown-2, 5px, v.$green-fade, v.$green-fade);
+}
+#exception-msg {
+	@include m.rounded-shaded-box(0, 0, v.$brown-2, 5px, v.$red-fade, v.$red-fade);
+}
+
 
 /* #endregion */
 
