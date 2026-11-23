@@ -70,6 +70,11 @@ _notes
 dwsync.xml
 
 
+# Worskpace file #
+##################
+.code-workspace
+
+
 # Ignore Node Modules #
 #######################
 node_modules/
