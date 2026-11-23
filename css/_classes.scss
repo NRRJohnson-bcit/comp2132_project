@@ -6,47 +6,6 @@
 place after HTML elements in .css file
 -----------------------------*/
 
-/* #region : nav bar classes */
-.nav_a{
-	border:solid 1px grey;
-	margin:5px 5px 5px 5px;
-	padding:8px;
-	background-color: v.$brown-2;
-	color: v.$back-parch;
-	
-	display: block;
-	text-decoration: none;
-	text-align: center;
-	font-weight: bold;
-}
-.nav_a:link, .nav_a:visited {
-	color: v.$back-parch;
-}
-.nav_a:hover, .nav_a:focus, .nav_a:active {
-	background-color: v.$back-parch;
-	color: v.$dark-brown;
-	outline: none;
-	text-decoration: none;
-}
-
-/* .show class used by javascript to show/hide nav */
-.show {
-	display: block;
-}
-
-.btn-menu {
-	display: block;
-	background-color: transparent;
-	border: none;
-	font-size: 1.3rem;
-	color: #2b303a;
-	text-transform: uppercase;
-	cursor: pointer;
-	padding-right: 12px;
-}
-
-/* #endregion */
-
 .hide {
 	display: none;
 }
@@ -69,7 +28,8 @@ place after HTML elements in .css file
 /* #region : letter class(es) */
 
 #letter-display .letter-selected {
-	background-color: v.$article-highlight;
+	transition: all 0.5s ease;
+	
 	color: v.$blue-fade;
 	@include m.rounded-shaded-box(3px, 3px, v.$article-highlight, 3px, v.$blue-fade, v.$article-highlight);
 }

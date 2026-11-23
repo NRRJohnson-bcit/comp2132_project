@@ -19,9 +19,9 @@ const $exceptionMsg = $("#exception-msg");
 
 
 // #region -- letter elements --
-// const $carousel = $("#carousel");
 const $letterInput = $("#letter-input");
 const $guessBtn = $("#submit");
+
 // messages under letter guess input
 const $invalidLetter = $("#invalid-letter");
 const $alreadyGuessed = $("#already-guessed");
@@ -46,7 +46,6 @@ let emojiIndex = 0;
 
 // let hangWord = new Word("TESTING");
 // let hangHint = "This is a hint!";
-
 let hangWord;
 let hangHint = "";
 
@@ -55,22 +54,15 @@ html = "";
 // #endregion
 
 
-
 // #region -- initial setup --
 
 // setting up puzzle blanks, hint, and starting emoji all handled in getWord()
 getWord();
-// puzzleBlanks();
-// setHint();
-// updateEmoji();
 
 // #endregion
 
 
-
 // #region -- handlers for letter clicking --
-
-// $allLetters.click(getLetter);
 
 $guessBtn.click(submitLetter);
 $reset.click(resetPuzzle);
@@ -79,16 +71,11 @@ function submitLetter(e) {
 	e.preventDefault();
 	hideMessages();
 	
-	// console.log("CLICK");
-	
 	letter = $letterInput.val();
-	// console.log(letter);
 	
-	// const regExLetter = "[a-zA-Z]";
 	let regExLetter = RegExp("[a-zA-Z]");
 	
 	if (!regExLetter.test(letter)) {
-		// console.log("NOT A LETTER");
 		$invalidLetter.removeClass("hide");
 	} else {
 		
@@ -121,22 +108,13 @@ function submitLetter(e) {
 					$gameOver.removeClass("hide");
 					disableGuessing();
 				}
-				
 			}
 		}
-		
 	}
 	
 	// set focus on text box, and select the text in it
 	$letterInput.focus();
 	$letterInput.select();
-}
-
-
-function getLetter() {
-	let letter = "TEST";
-	
-	console.log(letter);
 }
 
 
@@ -166,7 +144,6 @@ function updateEmoji() {
 function puzzleBlanks() {
 	html = "";
 	let correctArray = hangWord.getCorrectArray();
-	// console.log(correctArray);
 	
 	for( let i = 0; i < correctArray.length; i++ ){
 		// if there is a letter in this index of the array, display it
@@ -178,7 +155,6 @@ function puzzleBlanks() {
 		}
 	}
 	
-	// console.log(html);
 	$wordDisplay.html(html);
 }
 
@@ -191,6 +167,9 @@ function resetPuzzle() {
 	hideMessages();
 	if (!$congratsMsg.hasClass("hide")) {
 		$congratsMsg.addClass("hide");
+	}
+	if (!$hintDisplay.hasClass("hide")) {
+		$hintDisplay.addClass("hide");
 	}
 	$allLetters.removeClass("letter-selected");
 	$letterInput.val("");
@@ -219,22 +198,15 @@ function enableGuessing() {
 // #region -- update displayed letters --
 
 function greyOutLetter(letter) {
-	// console.log($allLetters);
-	
 	letter = letter.toUpperCase();
 	
 	$allLetters.each(function(li) {
 		let char = $(this).html();
 		
-		// console.log(char);
-		
 		if (char == letter && !$(this).hasClass("letter-selected")) {
 			$(this).addClass("letter-selected");
-			// console.log("adding class");
 		}
-		
 	});
-	
 }
 
 // hide the messages under letter guess input
@@ -271,7 +243,7 @@ function getWord() {
 	}
 	
 	const fetchLocation = "https://randomlexicon.com/api/random-definition?lang=en&maxLen=8";
-	// const fetchLocation = "https://randomlexicon.com/api/words/ox-eyed";
+	// const fetchLocation = "https://randomlexicon.com/api/words/ox-eyed";					// can use this to test handling of hyphens
 	
 	fetch(fetchLocation)
 		.then(function(response) {
@@ -283,8 +255,8 @@ function getWord() {
 		})
 		.then(function(data) {
 			// handle the API data
-			console.log(data.word);
-			console.log(data.definition);
+			// console.log(data.word);														// uncomment to display word on console, for testing
+			// console.log(data.definition);
 			
 			hangWord = new Word(data.word);
 			hangHint = data.definition;
@@ -292,7 +264,6 @@ function getWord() {
 			puzzleBlanks();
 			setHint();
 			updateEmoji();
-			
 		})
 		.catch(function(error) {
 			// handle problems
@@ -304,11 +275,7 @@ function getWord() {
 			// let the user know something's happened
 			$exceptionMsg.removeClass("hide");
 		});
-	
-	
 }
-
-
 
 // #endregion
 

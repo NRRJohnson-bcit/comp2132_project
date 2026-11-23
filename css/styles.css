@@ -511,47 +511,6 @@ a:active {
 .class selectors 
 place after HTML elements in .css file
 -----------------------------*/
-/* #region : nav bar classes */
-.nav_a {
-  border: solid 1px grey;
-  margin: 5px 5px 5px 5px;
-  padding: 8px;
-  background-color: #897565;
-  color: #f1e9d0;
-  display: block;
-  text-decoration: none;
-  text-align: center;
-  font-weight: bold;
-}
-
-.nav_a:link, .nav_a:visited {
-  color: #f1e9d0;
-}
-
-.nav_a:hover, .nav_a:focus, .nav_a:active {
-  background-color: #f1e9d0;
-  color: #312a2c;
-  outline: none;
-  text-decoration: none;
-}
-
-/* .show class used by javascript to show/hide nav */
-.show {
-  display: block;
-}
-
-.btn-menu {
-  display: block;
-  background-color: transparent;
-  border: none;
-  font-size: 1.3rem;
-  color: #2b303a;
-  text-transform: uppercase;
-  cursor: pointer;
-  padding-right: 12px;
-}
-
-/* #endregion */
 .hide {
   display: none;
 }
@@ -573,7 +532,7 @@ place after HTML elements in .css file
 /* #endregion */
 /* #region : letter class(es) */
 #letter-display .letter-selected {
-  background-color: #D4CAB0;
+  transition: all 0.5s ease;
   color: #789095;
   box-shadow: 3px 3px 10px #D4CAB0;
   border-radius: 3px;
@@ -739,7 +698,7 @@ place after HTML elements in .css file
 }
 
 #letter-display li:hover {
-  cursor: pointer;
+  cursor: default;
 }
 
 /* #endregion */
